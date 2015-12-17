@@ -32,7 +32,21 @@ www:
   env_file:
     - secrets/environment.sh
   restart: always
-celery:
+celery-beat:
+  build: .
+  links:
+    - postgres
+    - redis
+  volumes_from:
+    - data
+  entrypoint: sentry
+  command: celery beat
+  environment:
+    - C_FORCE_ROOT=true
+  env_file:
+    - secrets/environment.sh
+  restart: always
+celery-workers:
   build: .
   links:
     - postgres
