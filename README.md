@@ -17,6 +17,14 @@ This is a production ready setup of
 docker-compose up
 ```
 
+## How do I install/update this thing?
+
+Run this once to do the DB migrations and create a first superuser.
+
+```
+docker-compose run www upgrade
+```
+
 ## How do I find the exposed port?
 
 ```
@@ -34,9 +42,12 @@ docker-compose run www createuser
 The `sentry.conf.py` holds all the Sentry configurations. Your secret stuff,
 however, has to be put into your env.
 
-* SECRET_KEY
-* SERVER_EMAIL
-* SENTRY_URL_PREFIX
+## Example ENV secret/environment.sh
+```
+SECRET_KEY=please generate this
+SERVER_EMAIL=sentry@foo.bar
+SENTRY_URL_PREFIX=https://sentry.foo.bar
+```
 
 ## [MIT Licensed](https://github.com/Turistforeningen/sentry/blob/master/LICENSE)
 
