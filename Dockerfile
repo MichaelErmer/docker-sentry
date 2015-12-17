@@ -1,4 +1,4 @@
-FROM dockerrepo.oss.rocks/python:2.7.10
+FROM michaelermer/docker-python2.7.10
 
 MAINTAINER Hans Kristian Flaatten <hans.kristian.flaatten@turistforeningen.no>
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
