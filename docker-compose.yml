@@ -21,7 +21,7 @@ postgres:
 www:
   build: .
   ports:
-    - "8080"
+    - "3090:8080"
   links:
     - postgres
     - redis
@@ -29,6 +29,20 @@ www:
     - data
   entrypoint: sentry
   command: start --noinput
+  env_file:
+    - secrets/environment.sh
+  restart: always
+celery:
+  build: .
+  links:
+    - postgres
+    - redis
+  volumes_from:
+    - data
+  entrypoint: sentry
+  command: celery worker -c 6 -B -l WARNING -n worker-%(process_num)02d
+  environment:
+    - C_FORCE_ROOT=true
   env_file:
     - secrets/environment.sh
   restart: always

@@ -30,14 +30,51 @@ DATABASES = {
     }
 }
 
+
 SENTRY_REDIS_OPTIONS = {
     'hosts': {
         0: {
             'host': 'redis',
             'port': 6379,
+            'db': 0
         },
+    }   
+}   
+
+SENTRY_TSDB = 'sentry.tsdb.redis.RedisTSDB'
+SENTRY_TSDB_OPTIONS = {
+    'hosts': {
+        0: {
+            'host': 'redis',
+            'port': 6379,
+            'db': 1
+        }
     }
 }
+
+ 
+SENTRY_BUFFER = 'sentry.buffer.redis.RedisBuffer'
+SENTRY_BUFFER_OPTIONS = {
+    'hosts': {
+        0: {
+            'host': 'redis',
+            'port': 6379,
+            'db': 2
+        }
+    }
+}
+
+ 
+BROKER_URL = "redis://redis:6379/3"
+
+SENTRY_CACHE = 'sentry.cache.redis.RedisCache'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
+}
+CACHE_VERSION = 1
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = os.environ.get('EMAIL_HOST', '')
