@@ -3,6 +3,9 @@
 from sentry.conf.server import *
 import os
 
+def str2bool(v):
+  return v.lower() in ("yes", "true", "t", "1")
+
 CONF_ROOT = os.path.dirname(__file__)
 TIME_ZONE = 'Europe/Oslo'
 
@@ -81,7 +84,7 @@ EMAIL_HOST = os.environ.get('EMAIL_HOST', '')
 EMAIL_PORT = os.environ.get('EMAIL_PORT', '')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
-EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', True)
+EMAIL_USE_TLS = str2bool(os.environ.get('EMAIL_USE_TLS', "True"))
 
 # The email address to send on behalf of
 SENTRY_URL_PREFIX = os.environ.get('SENTRY_URL_PREFIX') or 'http://example.com'
@@ -100,3 +103,5 @@ SENTRY_WEB_OPTIONS = {
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 USE_X_FORWARDED_HOST = True
 
+SENTRY_FEATURES['auth:register'] = str2bool(os.environ.get('ALLOW_REGISTRATION', "False"))
+SENTRY_FEATURES['organizations:sso'] = str2bool(os.environ.get('ALLOW_SSO', "False"))
