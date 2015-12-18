@@ -47,11 +47,17 @@ however, has to be put into your env.
 SECRET_KEY=please generate this
 SERVER_EMAIL=sentry@foo.bar
 SENTRY_URL_PREFIX=https://sentry.foo.bar
+```
+
+optional:
+```
 EMAIL_HOST=mail.foo.bar
 EMAIL_PORT=25
 EMAIL_HOST_USER=mailer
 EMAIL_HOST_PASSWORD=qwert123
 EMAIL_USE_TLS=False
+ALLOW_REGISTRATION=True # defaults to False, remove to set to False as
+ALLOW_SSO=True # defaults to False
 ```
 
 ## [MIT Licensed](https://github.com/Turistforeningen/sentry/blob/master/LICENSE)
