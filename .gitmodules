@@ -1,3 +1,2 @@
 [submodule "secrets"]
 	path = secrets
-	url = git.hw.dnt.no:~/repos/sentry/
