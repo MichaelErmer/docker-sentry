@@ -42,7 +42,7 @@ docker-compose run www createuser
 The `sentry.conf.py` holds all the Sentry configurations. Your secret stuff,
 however, has to be put into your env.
 
-## Example ENV secret/environment.sh
+## Example ENV secrets/environment.sh
 ```
 SECRET_KEY=please generate this
 SERVER_EMAIL=sentry@foo.bar
