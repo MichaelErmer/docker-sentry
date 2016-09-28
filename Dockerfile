@@ -10,7 +10,7 @@ RUN apt-get -qq update && DEBIAN_FRONTEND=noninteractive \
 RUN pip install -U virtualenv
 RUN virtualenv /www/sentry/
 RUN source /www/sentry/bin/activate
-RUN pip install -U sentry==8.0.0rc1 sentry-slack
+RUN pip install -U sentry==8.8.0 sentry-slack
 ADD sentry.conf.py /root/.sentry/sentry.conf.py
 EXPOSE 8080
 
